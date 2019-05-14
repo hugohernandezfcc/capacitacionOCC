@@ -1,0 +1,41 @@
+<aura:component controller="ControllerComponentOcc" implements="flexipage:availableForAllPageTypes,force:hasRecordId" access="global">
+	
+	<aura:attribute name="recordId"
+					type="String" />
+
+	<aura:attribute name="accountRecord" 
+					type="Object" />
+
+	<aura:attribute name="recordLoadError" 
+					type="String" />
+
+
+	<aura:attribute name="nombre" 
+					type="String" 
+					default="Hugo Hernández" 
+					access="global" />
+	
+	<lightning:button variant="brand" 
+						label="Call to Apex" 
+						title="Call to Apex" 
+						onclick="{!c.callToApexServer}" />
+
+
+	<force:recordData aura:id="recordloader"
+					recordId="{!v.recordId}"					
+					fields="Name, Description, Phone, Industry"
+					targetFields="{!v.accountRecord}" 
+					targetError="{!v.recordLoadError}"
+					/>
+
+	<div class="Record Details">
+		<lightning:card iconName="standard:account" 
+						title="{!v.accountRecord.Name}" >
+			
+			<p class="slds-text-heading-medium"> {!v.accountRecord.Industry} </p>
+
+		</lightning:card>
+	</div>
+
+
+</aura:component>
