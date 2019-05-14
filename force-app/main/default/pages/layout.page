@@ -1,0 +1,42 @@
+<apex:page controller="DoITPDF" standardStylesheets="false" renderAs="pdf" applyHtmlTag="false" showHeader="false">
+    <head>
+       <style type="text/css">
+         body{
+            font-family: Sans-serif;
+            font-size: 13px;
+        }
+        td.labelCol{
+            font-weight: bold;
+            padding-right: 10px;
+            padding-left: 5px;
+        }
+        div.listRelatedObject{
+          border-style: solid;
+          border-radius: 8px;
+          margin-top: 10px;
+          border-width: 1px;
+          padding-left: 10px;salesforce1
+        }
+
+        table.list {
+
+          border-collapse: collapse;
+          border: 1px solid black;
+          margin-bottom: 5px;
+        }
+
+        th.noRowsHeader {
+          padding: 5px;
+        }
+
+        div.fewerMore {
+          display: none;
+        }
+
+       </style>
+    </head>
+
+
+    <apex:detail subject="{!recordId}" relatedList="true"  title="true"/>
+     
+</apex:page>

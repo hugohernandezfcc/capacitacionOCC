@@ -1,0 +1,215 @@
+<apex:page showHeader="false" applyHtmlTag="false" applyBodyTag="false">
+    <head>
+        <apex:includeScript value="{!$Resource.SocketIo}"/> 
+        <apex:slds /> 
+    </head>
+
+    <body class="slds-scope">
+        <div class="slds-docked_container" style="padding: 0 0 0 0;width: 99%;">
+    <section class="slds-docked-composer slds-grid slds-grid_vertical slds-is-open" role="dialog" aria-labelledby="dialog-heading-id-1" aria-describedby="dialog-content-id-1" style="width: 100%;height: 520px;">
+      <header class="slds-docked-composer__header slds-grid slds-shrink-none" aria-live="assertive">
+        <div class="slds-media slds-media_center slds-no-space">
+          <div class="slds-media__figure slds-m-right_x-small">
+            <span class="slds-icon_container">
+              <svg class="slds-icon slds-icon_small slds-icon-text-default" aria-hidden="true">
+                <use xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#call" xmlns:xlink="http://www.w3.org/1999/xlink" />
+              </svg>
+            </span>
+          </div>
+          <div class="slds-media__body">
+            <h2 class="slds-truncate" id="dialog-heading-id-1" title="Lei Chan - No Answer">Lei Chan - No Answer</h2>
+          </div>
+        </div>
+        <div class="slds-col_bump-left slds-shrink-none">
+          
+          <button class="slds-button slds-button_icon slds-button_icon" title="Attach content">
+            <svg class="slds-button__icon" aria-hidden="true">
+              <use xlink:href="{!URLFOR($Asset.SLDS, '/assets/icons/utility-sprite/svg/symbols.svg#attach')}" xmlns:xlink="http://www.w3.org/1999/xlink" />
+            </svg>
+            <span class="slds-assistive-text">Attach content</span>
+          </button>
+          
+        </div>
+      </header>
+      <div class="slds-docked-composer__body slds-align_absolute-center" id="dialog-content-id-1">
+       
+        <!-- <div class="slds-text-align_center slds-align-middle" style="display: none;">
+          <span class="slds-avatar slds-avatar_large">
+            <apex:image url="{!$Resource.headMaya}" width="80%"/>
+          </span>
+          <h3 class="slds-text-heading_large">Lei Chan</h3>
+          <ul class="slds-list_horizontal slds-has-dividers_right slds-text-body_small">
+            <li class="slds-item">VP of Sales</li>
+            <li class="slds-item ">Acme Corporation</li>
+          </ul>
+          <p class="slds-text-heading_medium slds-m-top_medium">validating...</p>
+        </div>  -->
+
+          
+
+          <section role="log" class="slds-chat" id="container-chat-list-mayax" style="height: 390px;overflow: scroll;width: 100%;position: fixed;overflow-x: hidden;">
+            <ul class="slds-chat-list" id="chat-list-mayax">
+               <!-- <li class="slds-chat-listitem slds-chat-listitem_outbound">
+                <div class="slds-chat-message">
+                  <div class="slds-chat-message__body">
+                    <div class="slds-chat-message__text slds-chat-message__text_outbound">
+                      <span>Hi Andy, my name is Amber and I can help you solve your issue.</span>
+                    </div>
+                    <div class="slds-chat-message__meta" aria-label="said Amber Cann at 5:23 PM">Amber Cann • 5:23 PM</div>
+                  </div>
+                </div>
+              </li> -->
+              
+              <!-- <li class="slds-chat-listitem slds-chat-listitem_inbound">
+                <div class="slds-chat-message">
+                  <span class="slds-avatar slds-avatar_circle slds-chat-avatar">
+                    <abbr class="slds-avatar__initials slds-avatar__initials_inverse" title="Andy Martinez">AM</abbr>
+                  </span>
+                  <div class="slds-chat-message__body">
+                    <div class="slds-chat-message__text slds-chat-message__text_inbound">
+                      <span>Nevermind, I speak french.Nevermind, I speak french.Nevermind, I speak french.Nevermind, I speak french.Nevermind, I speak french.Nevermind, I speak french.Nevermind, I speak french.Nevermind, I speak french.Nevermind, I speak french.Nevermind, I speak french.Nevermind, I speak french.Nevermind, I speak french.Nevermind, I speak french.Nevermind, I speak french.Nevermind, I speak french.Nevermind, I speak french.Nevermind, I speak french.</span>
+                    </div>
+                    <div class="slds-chat-message__meta" aria-label="said Andy Martinez at 5:29 PM">Andy Martinez • 5:29 PM</div>
+                  </div>
+                </div>
+              </li>  -->
+            </ul>
+          </section>
+
+            
+             
+            
+      </div>
+      <footer class="slds-docked-composer__footer slds-shrink-none">
+        <div class="slds-publisher" style="width: 100%;">
+            <input type="text" id="message-text-box-mayax" class="slds-publisher__input slds-textarea slds-text-longform" placeholder="{!$Label.Write}"/>
+            <!-- <textarea id="message-text-box-mayax" class="slds-publisher__input slds-textarea slds-text-longform" ></textarea> -->
+            <div class="slds-publisher__actions slds-grid slds-grid_align-spread">
+                <button class="slds-button slds-button_brand" onclick="sendMessage();">{!$Label.send}</button>
+            </div>
+        </div>
+      </footer>
+    </section>
+  </div>
+    </body>
+
+    <script>
+    	
+      var wage = document.getElementById("message-text-box-mayax");
+      
+
+      function sendMessage() {
+        if(wage.value != "" || wage.value != " ")
+          createMessageOwnDOM();
+      }
+      
+      wage.addEventListener("keydown", function (e) {
+          if (e.keyCode === 13 ) {
+                sendMessage();
+          }
+      });
+
+      var counterScroll = 0;
+
+      function createExternalMessage() {
+
+        var li = document.createElement("li");
+        li.className = "slds-chat-listitem slds-chat-listitem_inbound";
+        document.getElementById('chat-list-mayax').appendChild(li);
+
+        var sldsChatMessage = document.createElement("div");
+        sldsChatMessage.className = "slds-chat-message";
+        li.appendChild(sldsChatMessage);
+
+        var sldsChatMessageBody = document.createElement("div");
+        sldsChatMessageBody.className = "slds-chat-message__body";
+        sldsChatMessage.appendChild(sldsChatMessageBody);
+
+        var sldsChatMessage__text_inbound = document.createElement("div");
+        sldsChatMessage__text_inbound.className = "slds-chat-message__text slds-chat-message__text_inbound";
+
+        if(document.getElementById('message-text-box-mayax').value.length > 40)
+         sldsChatMessage__text_inbound.setAttribute('style', 'width: 91%;');
+
+        sldsChatMessageBody.appendChild(sldsChatMessage__text_inbound);
+
+        var span = document.createElement("span");
+        var t = document.createTextNode(document.getElementById('message-text-box-mayax').value);       // Create a text node
+        span.appendChild(t);  
+        sldsChatMessage__text_inbound.appendChild(span);
+
+        var sldsChatMessage__meta = document.createElement("div");
+          sldsChatMessage__meta.className = "slds-chat-message__meta";
+           if(document.getElementById('message-text-box-mayax').value.length > 40)
+            sldsChatMessage__meta.setAttribute('style', 'width: 91%;');
+          var textMeta = document.createTextNode("Amber Cann • 5:23 PM");
+          sldsChatMessage__meta.appendChild(textMeta);
+          sldsChatMessageBody.appendChild(sldsChatMessage__meta);
+      }
+
+      function createMessageOwnDOM() {
+
+          var li = document.createElement("li");
+          li.className = "slds-chat-listitem slds-chat-listitem_outbound";
+          document.getElementById('chat-list-mayax').appendChild(li); 
+
+          var sldsChatMessage = document.createElement("div");
+          sldsChatMessage.className = "slds-chat-message";
+          li.appendChild(sldsChatMessage);
+
+          var sldsChatMessageBody = document.createElement("div");
+          sldsChatMessageBody.className = "slds-chat-message__body";
+          //if(document.getElementById('message-text-box-mayax').value.length > 40)
+          //  sldsChatMessageBody.setAttribute('style', 'width:91%;');
+
+          sldsChatMessage.appendChild(sldsChatMessageBody);
+
+          var sldsChatMessage__text_outbound = document.createElement("div");
+          sldsChatMessage__text_outbound.className = "slds-chat-message__text slds-chat-message__text_outbound";
+
+          if(document.getElementById('message-text-box-mayax').value.length > 40)
+           sldsChatMessage__text_outbound.setAttribute('style', 'width: 91%;');
+
+          sldsChatMessageBody.appendChild(sldsChatMessage__text_outbound);
+
+          var span = document.createElement("span");
+          var t = document.createTextNode(document.getElementById('message-text-box-mayax').value);       // Create a text node
+          span.appendChild(t);  
+          sldsChatMessage__text_outbound.appendChild(span);
+
+
+          var sldsChatMessage__meta = document.createElement("div");
+          sldsChatMessage__meta.className = "slds-chat-message__meta";
+           if(document.getElementById('message-text-box-mayax').value.length > 40)
+            sldsChatMessage__meta.setAttribute('style', 'width: 91%;');
+          var textMeta = document.createTextNode("Amber Cann • 5:23 PM");
+          sldsChatMessage__meta.appendChild(textMeta);
+          sldsChatMessageBody.appendChild(sldsChatMessage__meta);
+
+          counterScroll++;
+
+          document.getElementById('message-text-box-mayax').value = '';
+          document.getElementById('container-chat-list-mayax').scrollTo(0, (counterScroll * 10000));
+      }
+
+      var socket = io.connect('https://rocky-atoll-53780.herokuapp.com', {'force': true});
+		
+      var room = "abc123";
+      socket.on('connect', function() {
+         // Connected, let's sign-up for to receive messages for this room
+		    socket.emit('room', room);
+      });
+
+	   	socket.on('rooming', function(data) {
+        console.log('rooming:', data);
+      });
+
+    	socket.on('message', function(data) {
+         console.log('Incoming message:'+ data);
+      });
+	
+      socket.on('notice', function(data) {
+          console.log(data);
+      });
+    </script>
+</apex:page>

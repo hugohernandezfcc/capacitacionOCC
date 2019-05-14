@@ -1,0 +1,9 @@
+<apex:page standardController="Account" extensions="saveAccount" showHeader="true" sidebar="true">
+	<b>{!SaludoNuevaCuenta}</b>
+	<br/>
+	<apex:form >
+		<apex:inputField value="{!Account.Name}" /> 
+		<apex:commandButton action="{!save}" value="Guardar Cuenta" />
+		<br/>
+	</apex:form>
+</apex:page>

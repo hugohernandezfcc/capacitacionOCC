@@ -1,0 +1,32 @@
+<apex:page showHeader="true" sidebar="true" controller="classForAnswerCommunity">
+    
+    <head>
+    	
+		<script type="text/javascript">
+		    function callToServer() {
+
+		        Visualforce.remoting.Manager.invokeAction(
+		            '{!$RemoteAction.classForAnswerCommunity.callToServer}',
+		            'pass parameter only if is necessary', 
+		            function(result, event){
+		                if (event.status) {
+		                	//In the variable result stored the data that return callToServer
+
+		                	alert(result);
+		                } else if (event.type === 'exception') {
+
+		                	alert('message: '+event.message+ ' where: '+event.where);
+		                } else {
+		                    alert('Message: '+event.message);
+		                }
+		            }, 
+		            {escape: true}
+		        );
+		    }
+	    </script>
+    </head>
+
+    <body>
+    	<button onclick="callToServer();">Call To Server</button>
+    </body>
+</apex:page>

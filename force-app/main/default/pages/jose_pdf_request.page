@@ -1,0 +1,148 @@
+<apex:page standardStylesheets="false" applyHtmlTag="false" showHeader="false" renderAs="PDF">
+	
+	<html>
+	<head>
+		
+		<style type="text/css">
+
+			.first-Col{
+				height: 70px;
+	    		width: 480px;
+	    		align:left;
+	    		float: left;
+			}
+			.last-Col{
+				height: 70px;
+	    		width: 220px;
+	    		align:left;	     
+			}
+			.first-row{
+				height: 15px;
+				width: 100%;
+				align: left;
+				font-family: sans-serif;
+			}
+			.title-front{
+				align: center;
+				text-transform: uppercase;
+				font-size: 20px;
+				font-weight: bold;
+				font-family: sans-serif;
+			}
+
+			.answer{
+				padding-top: 5px;
+				font-size: 30px;
+				align:left;
+				font-family: sans-serif;
+			}
+
+			.answer1{
+				padding-top: 5px;
+				font-size: 41px;
+				align:left;
+				font-family: sans-serif;
+			}
+
+			.answer .date{
+				padding-top: -15px;
+				font-size: 21px;
+				align: right;
+				font-family: sans-serif;
+			}
+
+			hr {
+			    border: 0;
+			    border-top: 3px solid #000000;
+			}
+
+		</style>
+
+	</head>
+	<body>
+		<div class="first-Col">
+			<div class="first-row"> </div>
+			<div class="answer"> </div>
+			
+		</div>
+		<div class="last-Col">
+			<div class="first-row"></div>
+			<div class="answer1">HealPros</div>
+		</div>		
+		
+		<br/>	
+		<br/>			
+		<div class="title-front" align="center">FACSIMILE COVER SHEET</div>
+		<br/>			
+		<br/>			
+		<br/>			
+		
+		<div class="first-Col">
+			<div class="first-row">TO:</div>
+			<div class="answer"> </div>
+			
+		</div>
+		<div class="last-Col">
+			<div class="first-row">FROM:</div>
+			<div class="answer">HealPros</div>
+			<hr style="width: 1200px;" />
+		</div>
+
+		<div class="first-Col">
+			<div class="first-row">COMPANY:</div>
+			<div class="answer"> </div>
+			
+		</div>
+		<div class="last-Col">
+			<div class="first-row">DATE:</div>
+			<div class="answer">
+				<div class="date">
+					10/18/2016 4:40pm
+				</div>	
+			</div>
+			<hr style="width: 1200px;" />
+		</div>
+		
+		<div class="first-Col">
+			<div class="first-row">TO FAX NUMBER:</div>
+			<div class="answer">4045551234</div>
+			
+		</div>
+		<div class="last-Col">
+			<div class="first-row">SENDING FAX NUMBER:</div>
+			<div class="answer">(844) 803-1353</div>
+			<hr style="width: 1200px;" />
+		</div>
+
+		<div class="first-Col">
+			<div class="first-row">RE:</div>
+			<div class="answer"> </div>
+			
+		</div>
+		<div class="last-Col">
+			<div class="first-row">total no. of pages:</div>
+			<div class="answer">including cover: 6</div>
+			<hr style="width: 1200px;" />
+		</div>
+
+		<div class="first-Col">
+			<div class="first-row"><b>NOTES / COMMENTS</b></div>
+			<div style="font-family: sans-serif;">
+				<p>The document(s) included in this fax: is a result of a diabetis retinal examination performed on the patent listed on the report(s) by headprog in conjuntion with</p> 
+				
+				<p>the patient's headth insurance provider.</p>
+				<br/>
+				<p>for questions, please contact patient services at (889) 610-9111</p>
+				<p>HealPros<br/>Diabetic Retinal Imaging.</p>
+			</div>
+			<br/>
+			
+			<hr style="width: 1200px;" />
+			<div align="center" style="font-size: 13px;">
+				H E A L P R O S - W W W . H E A L P R O S . C O M ( 8 8 9 ) 6 1 0 - 9 1 1 1  
+			</div>
+			
+		</div>
+	</body>
+	</html>
+</apex:page>

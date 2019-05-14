@@ -1,0 +1,4 @@
+<aura:component implements="flexipage:availableForRecordHome,lightning:availableForFlowScreens,force:hasRecordId" access="global" >
+	<aura:attribute name="carasde" type="String" access="global" />
+    hola amiguitos caras de {!v.carasde}
+</aura:component>

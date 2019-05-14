@@ -1,0 +1,4 @@
+<aura:component implements="flexipage:availableForRecordHome,flexipage:availableForAllPageTypes,force:hasRecordId" access="global" >
+   
+	<iframe src="/apex/chatsession" width="100%" height="520px;" frameBorder="0"/> 
+</aura:component>
